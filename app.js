@@ -1,19 +1,21 @@
 const express = require('express')
+const { exitCode } = require('process')
 const app = express()
 const port = 3002
 
 app.use(express.json())
 
-app.use((req, res, next) => {
-    console.log('Time:', Date.now())
-    next()
-})
 
 // Routers
 const producto = require('./routes/producto.route.js')
+const auth     = require('./routes/auth.route.js')
 
-// Definicion de rutas
+// definicion de rutas
 app.use('/v1/producto', producto(express))
+app.use('/v1/auth', auth(express))
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
