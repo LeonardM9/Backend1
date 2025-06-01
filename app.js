@@ -15,7 +15,10 @@ const port = 3002
 
 // Configuración de CORS
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Puerto por defecto de Vite
+  origin: [
+    'http://localhost:5173',
+    'https://odontintegral.netlify.app'
+  ],
   credentials: true
 }))
 
